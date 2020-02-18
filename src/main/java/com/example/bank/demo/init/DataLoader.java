@@ -27,7 +27,10 @@ public class DataLoader  implements CommandLineRunner {
         System.out.println(userService.checkUsernameExists("jack"));
       //  primaryAccountRepository.findByAccountNumber(43092456);
         if(roleRepository.count() == 0){
-            roleRepository.save(new Role(1,"ROLE_USER"));
+            Role role = new Role();
+            role.setRoleId(1);
+            role.setName("ROLE_USER");
+            roleRepository.save(role);
         }
 
     }

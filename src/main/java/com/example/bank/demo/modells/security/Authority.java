@@ -2,7 +2,10 @@ package com.example.bank.demo.modells.security;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public class Authority implements GrantedAuthority {
+/**
+ * Created by z00382545 on 10/20/16.
+ */
+public class Authority implements GrantedAuthority{
 
     private final String authority;
 
@@ -12,6 +15,6 @@ public class Authority implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return null;
+        return authority;
     }
 }
