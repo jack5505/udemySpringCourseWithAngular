@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -24,7 +25,7 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private UserService userService;
 
-    private static int nextAccountNumber = 11223145;
+    private static int nextAccountNumber = 10000000 + new Random().nextInt(71223146);
 
     @Override
     public PrimaryAccount createPrimaryAccount() {
