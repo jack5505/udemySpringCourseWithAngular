@@ -21,4 +21,5 @@ public class PrimaryAccount {
     private List<PrimaryTransaction> primaryTransactions;
 
 
+
 }

@@ -2,6 +2,8 @@ package com.example.bank.demo.controller;
 
 
 import com.example.bank.demo.modells.User;
+import com.example.bank.demo.modells.security.UserRole;
+import com.example.bank.demo.repository.RoleRepository;
 import com.example.bank.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -9,12 +11,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @org.springframework.stereotype.Controller
 public class Controller {
+
 
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RoleRepository roleRepository;
 
     @RequestMapping("/")
     public String home(){
@@ -45,7 +53,10 @@ public class Controller {
                 }
                 return "signup";
         }else{
-            userService.save(user);
+            Set<UserRole> userRoleSet = new HashSet<>();
+            userRoleSet.add(new UserRole(user,roleRepository.findByName("ROLE_USER")));
+            userService.createUser(user,userRoleSet);
+
             return "redirect:/";
         }
 
