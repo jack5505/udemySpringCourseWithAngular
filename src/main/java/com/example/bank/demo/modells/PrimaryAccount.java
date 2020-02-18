@@ -20,6 +20,16 @@ public class PrimaryAccount {
     @JsonIgnore
     private List<PrimaryTransaction> primaryTransactions;
 
+    public PrimaryAccount() {
+    }
 
-
+    @Override
+    public String toString() {
+        return "PrimaryAccount{" +
+                "id=" + id +
+                ", accountNumber=" + accountNumber +
+                ", accountBalance=" + accountBalance +
+                ", primaryTransactions=" + primaryTransactions +
+                '}';
+    }
 }

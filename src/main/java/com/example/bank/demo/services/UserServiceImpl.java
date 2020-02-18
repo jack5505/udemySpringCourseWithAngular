@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
             user.setPrimaryAccount(accountService.createPrimaryAccount());
             user.setSavingsAccount(accountService.createSavingsAccount());
-            localUser = userRepository.save(user);
+         //   localUser = userRepository.save(user);
         }
         return localUser;
     }

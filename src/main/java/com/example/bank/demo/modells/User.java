@@ -8,10 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @Entity
@@ -69,4 +66,28 @@ public class User implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return false;
     }
+
+    public User() {
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", enabled=" + enabled +
+                ", primaryAccount=" + primaryAccount +
+                ", savingsAccount=" + savingsAccount +
+                ", appointMentList=" + appointMentList +
+                ", reciepentList=" + reciepentList +
+                ", userRoleSet=" + userRoleSet +
+                '}';
+    }
+
+
 }
