@@ -1,6 +1,8 @@
 package com.example.bank.demo.controller;
 
 
+import com.example.bank.demo.modells.PrimaryAccount;
+import com.example.bank.demo.modells.SavingsAccount;
 import com.example.bank.demo.modells.User;
 import com.example.bank.demo.modells.security.UserRole;
 import com.example.bank.demo.repository.RoleRepository;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -61,6 +64,17 @@ public class Controller {
         }
 
 
+    }
+
+    @RequestMapping(value = "/userFront",method = RequestMethod.GET)
+    public String userFront(Principal principal, Model model){
+        User user = userService.findByUserName(principal.getName());
+        PrimaryAccount primaryAccount = user.getPrimaryAccount();
+        SavingsAccount savingsAccount = user.getSavingsAccount();
+
+        model.addAttribute("primaryAccount",primaryAccount);
+        model.addAttribute("savingsAccount",savingsAccount);
+        return "userFront";
     }
 
 

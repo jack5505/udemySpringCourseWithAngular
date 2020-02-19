@@ -16,4 +16,6 @@ public interface UserService {
 
 
     User createUser(User user, Set<UserRole> userRoleSet);
+
+    User findByUserName(String name);
 }
